@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head %}
+  {{ super() }}
+  {% for keyword in article.keywords %}
+    <meta name="keywords" content="{{keyword}}" />
+  {% endfor %}
+
+  {% for description in article.description %}
+    <meta name="description" content="{{description}}" />
+  {% endfor %}
+
+  {% for tag in article.tags %}
+    <meta name="tags" content="{{tag}}" />
+  {% endfor %}
+
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+         <div class="container has-text-centered">
+            <p class="title is-3">
+                <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">
+                    {{ article.title }}
+                </a>
+            </p>
+            <p class="subtitle is-5">
+                {{ article.locale_date }}
+            </p>
+        </div>
+        <hr>
+        <div class="content ">
+            {{ article.content }}
+
+        </div>
+
+    </section>
+{% endblock %}
